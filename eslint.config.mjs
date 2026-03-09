@@ -1,6 +1,6 @@
 // @ts-check
-import antfu from '@antfu/eslint-config'
-import withNuxt from './.nuxt/eslint.config.mjs'
+import antfu from '@antfu/eslint-config';
+import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt(
   antfu({
@@ -11,8 +11,8 @@ export default withNuxt(
     stylistic: {
       indent: 2,
       semi: true,
-      quotes: "double"
-    }
+      quotes: "double",
+    },
   }, {
     rules: {
       "ts/consistent-type-definitions": ["error", "type"],
@@ -20,13 +20,20 @@ export default withNuxt(
       "antifu/no-top-level-await": ["off"],
       "node/prefer-global/process": ["off"],
       "node/no-process-env": ["error"],
-      "perfectionist/sort-imports": ["error", {
-        internalPattern: '^@/',
-      }],
+      // `perfectionist/sort-imports` runs on code files only (see override below)
       "unicorn/filename-case": ["error", {
         case: "kebabCase",
-        ignore: ["READEME.md"]
-      }]
-    }
-  })
-)
+        ignore: ["README.md"],
+      }],
+    },
+  },
+  // Limit perfectionist import-sorting to actual code files to avoid processors (eg. markdown)
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx,vue}"],
+    rules: {
+      "perfectionist/sort-imports": ["error", {
+        internalPattern: "^@/",
+      }],
+    },
+  }),
+);

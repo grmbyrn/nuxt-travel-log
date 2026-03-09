@@ -8,8 +8,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.15.2",
@@ -20,6 +22,11 @@
   "devDependencies": {
     "@antfu/eslint-config": "^7.7.0",
     "eslint": "^9.39.4",
-    "eslint-plugin-format": "^2.0.1"
+    "eslint-plugin-format": "^2.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,jsx,tsx}": "eslint --fix"
   }
 }
