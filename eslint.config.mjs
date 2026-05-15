@@ -1,6 +1,7 @@
 // @ts-check
-import antfu from '@antfu/eslint-config';
-import withNuxt from './.nuxt/eslint.config.mjs';
+import antfu from "@antfu/eslint-config";
+
+import withNuxt from "./.nuxt/eslint.config.mjs";
 
 export default withNuxt(
   antfu({
@@ -32,7 +33,7 @@ export default withNuxt(
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx,vue}"],
     rules: {
       "perfectionist/sort-imports": ["error", {
-        internalPattern: "^@/",
+        internalPattern: ["^@/"],
       }],
     },
   }),
